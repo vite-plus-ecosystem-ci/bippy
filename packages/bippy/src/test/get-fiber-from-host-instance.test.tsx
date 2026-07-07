@@ -2,7 +2,7 @@ import "../index.js"; // KEEP THIS LINE ON TOP
 
 import { render, screen } from "@testing-library/react";
 import React from "react";
-import { expect, it } from "vitest";
+import { expect, it } from "vite-plus/test";
 import { getFiberFromHostInstance } from "../index.js";
 
 it("should return the fiber from the host instance", () => {
