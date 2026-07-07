@@ -1,6 +1,6 @@
 import "../index.js"; // KEEP THIS LINE ON TOP
 
-import { describe, expect, it, vi } from "vitest";
+import { describe, expect, it, vi } from "vite-plus/test";
 import type { Fiber } from "../types.js";
 import {
   HostPortalTag,

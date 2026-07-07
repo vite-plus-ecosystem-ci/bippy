@@ -1,6 +1,6 @@
 import "../index.js"; // KEEP THIS LINE ON TOP
 
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import type { Fiber } from "../types.js";
 import { instrument } from "../index.js";
 import { getFiberHooks, type HooksNode } from "../source/inspect-hooks.js";

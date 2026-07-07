@@ -2,7 +2,7 @@ import "../index.js"; // KEEP THIS LINE ON TOP
 
 import { render } from "@testing-library/react";
 import React, { useState } from "react";
-import { expect, it } from "vitest";
+import { expect, it } from "vite-plus/test";
 import type { Fiber } from "../types.js";
 import { instrument } from "../index.js";
 import { getSource, getOwnerStack, getSourceMap, sourceMapCache } from "../source/index.js";
