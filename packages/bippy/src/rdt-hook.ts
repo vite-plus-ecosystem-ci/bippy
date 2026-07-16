@@ -4,6 +4,7 @@
 // make sure you import this file first before anything else (particularly React)
 
 import type { ReactDevToolsGlobalHook, ReactRenderer } from "./types.js";
+import { toUnsubscribe, type Unsubscribe } from "./unsubscribe.js";
 
 export const version = process.env.VERSION;
 export const BIPPY_INSTRUMENTATION_STRING = `bippy-${version}`;
@@ -16,9 +17,9 @@ const NO_OP = () => {
   /**/
 };
 
-const checkDCE = (fn: unknown): void => {
+const checkDCE = (functionToCheck: unknown): void => {
   try {
-    const code = Function.prototype.toString.call(fn);
+    const code = Function.prototype.toString.call(functionToCheck);
     if (code.indexOf("^_^") > -1) {
       setTimeout(() => {
         throw new Error(
@@ -52,27 +53,67 @@ export const isReactRefresh = (
   return Boolean(injectFnStr?.includes("(injected)"));
 };
 
-const onActiveListeners = new Set<() => unknown>();
+export const _onActiveListeners = new Set<() => unknown>();
 
 export const _renderers = new Set<ReactRenderer>();
 
+const rendererInjectListeners = new Set<(renderer: ReactRenderer) => void>();
+// re-wrapping inject (e.g. after the hook is replaced) leaves the old
+// wrapper in the call chain, so notifications are deduped per renderer
+const notifiedRenderers = new WeakSet<ReactRenderer>();
+let notifyingInject: ReactDevToolsGlobalHook["inject"] | null = null;
+
+const ensureInjectNotifiesListeners = (rdtHook: ReactDevToolsGlobalHook): void => {
+  if (rdtHook.inject === notifyingInject) return;
+  const prevInject = rdtHook.inject;
+  const nextInject = (renderer: ReactRenderer) => {
+    const rendererId = prevInject.call(rdtHook, renderer);
+    if (!notifiedRenderers.has(renderer)) {
+      notifiedRenderers.add(renderer);
+      for (const listener of rendererInjectListeners) {
+        listener(renderer);
+      }
+    }
+    return rendererId;
+  };
+  rdtHook.inject = nextInject;
+  notifyingInject = nextInject;
+};
+
+/**
+ * Subscribes to future renderer injections into the DevTools hook. The
+ * single shared inject wrapper lets multiple consumers (override methods,
+ * react-refresh, user code) observe renderers without stacking patches
+ * whose restore order matters. Returns an unsubscribe function.
+ */
+export const onRendererInject = (listener: (renderer: ReactRenderer) => void): Unsubscribe => {
+  ensureInjectNotifiesListeners(getRDTHook());
+  rendererInjectListeners.add(listener);
+  return toUnsubscribe(() => {
+    rendererInjectListeners.delete(listener);
+  });
+};
+
 export const installRDTHook = (onActive?: () => unknown): ReactDevToolsGlobalHook => {
+  if (onActive) {
+    _onActiveListeners.add(onActive);
+  }
   const renderers = new Map<number, ReactRenderer>();
-  let i = 0;
+  let rendererIdCounter = 0;
   let rdtHook: ReactDevToolsGlobalHook = {
     _instrumentationIsActive: false,
     _instrumentationSource: BIPPY_INSTRUMENTATION_STRING,
     checkDCE,
     hasUnsupportedRendererAttached: false,
     inject(renderer) {
-      const nextID = ++i;
-      renderers.set(nextID, renderer);
+      const nextRendererId = ++rendererIdCounter;
+      renderers.set(nextRendererId, renderer);
       _renderers.add(renderer);
       if (!rdtHook._instrumentationIsActive) {
         rdtHook._instrumentationIsActive = true;
-        onActiveListeners.forEach((listener) => listener());
+        _onActiveListeners.forEach((listener) => listener());
       }
-      return nextID;
+      return nextRendererId;
     },
     on: NO_OP,
     onCommitFiberRoot: NO_OP,
@@ -132,7 +173,7 @@ export const installRDTHook = (onActive?: () => unknown): ReactDevToolsGlobalHoo
 
 export const patchRDTHook = (onActive?: () => unknown): void => {
   if (onActive) {
-    onActiveListeners.add(onActive);
+    _onActiveListeners.add(onActive);
   }
   try {
     const rdtHook = globalThis.__REACT_DEVTOOLS_GLOBAL_HOOK__;
@@ -151,7 +192,7 @@ export const patchRDTHook = (onActive?: () => unknown): void => {
       }
       if (rdtHook.renderers.size) {
         rdtHook._instrumentationIsActive = true;
-        onActiveListeners.forEach((listener) => listener());
+        _onActiveListeners.forEach((listener) => listener());
         return;
       }
       const prevInject = rdtHook.inject;
@@ -160,24 +201,24 @@ export const patchRDTHook = (onActive?: () => unknown): void => {
         isReactRefreshOverride = true;
         // but since the underlying implementation doens't care,
         // it's ok: https://github.com/facebook/react/blob/18eaf51bd51fed8dfed661d64c306759101d0bfd/packages/react-refresh/src/ReactFreshRuntime.js#L430
-        const nextID = rdtHook.inject({
+        const injectedRendererId = rdtHook.inject({
           scheduleRefresh() {},
         } as unknown as ReactRenderer);
-        if (nextID) {
+        if (injectedRendererId) {
           rdtHook._instrumentationIsActive = true;
         }
       }
       rdtHook.inject = (renderer) => {
-        const id = prevInject(renderer);
+        const rendererId = prevInject(renderer);
         _renderers.add(renderer);
         if (isRefresh) {
           // react refresh doesn't inject this properly
           // https://github.com/facebook/react/blob/18eaf51bd51fed8dfed661d64c306759101d0bfd/packages/react-refresh/src/ReactFreshRuntime.js#L430
-          rdtHook.renderers.set(id, renderer);
+          rdtHook.renderers.set(rendererId, renderer);
         }
         rdtHook._instrumentationIsActive = true;
-        onActiveListeners.forEach((listener) => listener());
-        return id;
+        _onActiveListeners.forEach((listener) => listener());
+        return rendererId;
       };
     }
     if (
