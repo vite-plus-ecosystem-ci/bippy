@@ -112,7 +112,7 @@
     "@types/node": "^20",
     "@types/react": "^19.0.4",
     "@types/react-dom": "^19.0.2",
-    "@vitest/coverage-istanbul": "^4.1.10",
+    "@vitest/coverage-istanbul": "catalog:",
     "esbuild": "^0.27.0",
     "happy-dom": "^15.11.7",
     "publint": "^0.3.0",
@@ -122,7 +122,9 @@
     "react-refresh": "^0.16.0",
     "terser": "^5.36.0",
     "tsx": "^4.21.0",
-    "vite-plus": "latest"
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "react": ">=17.0.1"

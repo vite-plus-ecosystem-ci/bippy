@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { expect, it } from "vite-plus/test";
 import { getFiberId, setFiberId } from "../src/index.js";
 import type { Fiber } from "../src/types.js";
 

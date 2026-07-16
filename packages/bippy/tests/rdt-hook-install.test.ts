@@ -1,5 +1,5 @@
 // intentionally avoids importing ../index.js so this file controls hook installation
-import { expect, it, vi } from "vitest";
+import { expect, it, vi } from "vite-plus/test";
 import { getRDTHook, hasRDTHook, isClientEnvironment, patchRDTHook } from "../src/rdt-hook.js";
 import type { ReactDevToolsGlobalHook, ReactRenderer } from "../src/types.js";
 

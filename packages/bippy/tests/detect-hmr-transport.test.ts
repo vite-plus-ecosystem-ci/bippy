@@ -1,4 +1,4 @@
-import { afterEach, describe, expect, it, vi } from "vitest";
+import { afterEach, describe, expect, it, vi } from "vite-plus/test";
 import { detectHmrTransport } from "../src/react-refresh/detect-hmr-transport.js";
 import { installFakeWebSocket } from "./fake-web-socket.js";
 

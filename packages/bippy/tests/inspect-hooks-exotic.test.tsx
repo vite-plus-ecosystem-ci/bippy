@@ -1,6 +1,6 @@
 import "../src/index.js"; // KEEP THIS LINE ON TOP
 
-import { beforeAll, describe, expect, it } from "vitest";
+import { beforeAll, describe, expect, it } from "vite-plus/test";
 import type { Fiber } from "../src/types.js";
 import { getRDTHook, _renderers } from "../src/index.js";
 import { getFiberHooks, type HooksNode } from "../src/source/inspect-hooks.js";
