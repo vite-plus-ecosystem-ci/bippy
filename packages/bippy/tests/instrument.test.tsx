@@ -1,6 +1,6 @@
 import "../src/index.js"; // KEEP THIS LINE ON TOP
 
-import { expect, it, vi } from "vitest";
+import { expect, it, vi } from "vite-plus/test";
 import type { FiberRoot } from "../src/types.js";
 import { _fiberRoots, instrument, isInstrumentationActive } from "../src/index.js";
 import React from "react";

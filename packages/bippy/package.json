@@ -114,7 +114,7 @@
     "@types/node": "^20",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@vitest/coverage-istanbul": "^4.1.10",
+    "@vitest/coverage-istanbul": "catalog:",
     "happy-dom": "^15.11.7",
     "ink": "^7.1.1",
     "ink-testing-library": "^4.0.0",
@@ -127,7 +127,9 @@
     "remotion": "^4.0.496",
     "three": "^0.185.1",
     "tsx": "^4.21.0",
-    "vite-plus": "latest"
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   },
   "peerDependencies": {
     "react": ">=17.0.1"

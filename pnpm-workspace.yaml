@@ -1,3 +1,20 @@
 packages:
   - "packages/*"
   - "packages/e2e/fixtures/*"
+overrides:
+  react: ^19.2.4
+  react-dom: ^19.2.4
+  vite: "catalog:"
+  vitest: "catalog:"
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@0.0.0-commit.9855245a469b178066c25a5d45c971c130565d89
+  vitest: 4.1.10
+  vite-plus: 0.0.0-commit.9855245a469b178066c25a5d45c971c130565d89
+  "@vitest/coverage-istanbul": 4.1.10
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest
+  allowedVersions:
+    vite: "*"
+    vitest: "*"
