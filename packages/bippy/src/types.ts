@@ -299,6 +299,22 @@ export interface Family {
 }
 
 /**
+ * React 19 flight metadata for a server component owner (ReactComponentInfo).
+ * Unlike client owners it has no `tag`; the owner chain continues via `owner`.
+ */
+export interface ServerComponentInfo {
+  name?: string;
+  env?: string;
+  owner?: Fiber | ServerComponentInfo | null;
+  debugStack?: Error | null;
+}
+
+export interface RendererRefreshUpdate {
+  staleFamilies: Set<Family>;
+  updatedFamilies: Set<Family>;
+}
+
+/**
  * Represents a react-internal Fiber node.
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -367,6 +383,9 @@ export interface ReactDevToolsGlobalHook {
   onCommitFiberRoot: (rendererID: number, root: FiberRoot, priority: number | void) => void;
   onCommitFiberUnmount: (rendererID: number, fiber: Fiber) => void;
   onPostCommitFiberRoot: (rendererID: number, root: FiberRoot) => void;
+  // called by dev builds of react-reconciler on root schedule; absent from
+  // the hook react-refresh installs, so it stays optional
+  onScheduleFiberRoot?: (rendererID: number, root: FiberRoot, children: ReactNode) => void;
   renderers: Map<number, ReactRenderer>;
   supportsFiber: boolean;
 
@@ -402,13 +421,7 @@ export interface ReactRenderer {
   reconcilerVersion: string;
   rendererPackageName: string;
   // react refresh
-  scheduleRefresh?: (
-    root: FiberRoot,
-    update: {
-      staleFamilies: Set<Family>;
-      updatedFamilies: Set<Family>;
-    },
-  ) => void;
+  scheduleRefresh?: (root: FiberRoot, update: RendererRefreshUpdate) => void;
   scheduleRoot?: (root: FiberRoot, element: React.ReactNode) => void;
   scheduleUpdate?: (fiber: Fiber) => void;
 

@@ -21,13 +21,8 @@
     "@changesets/changelog-git": "^0.2.0",
     "@changesets/cli": "^2.30.0",
     "sherif": "^1.2.0",
-    "vite-plus": "latest"
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@10.12.1",
-  "pnpm": {
-    "overrides": {
-      "react": "^19.2.4",
-      "react-dom": "^19.2.4"
-    }
-  }
+  "packageManager": "pnpm@10.12.1"
 }
