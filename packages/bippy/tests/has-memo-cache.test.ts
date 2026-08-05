@@ -1,4 +1,4 @@
-import { expect, it } from "vitest";
+import { expect, it } from "vite-plus/test";
 import { hasMemoCache } from "../src/index.js";
 import type { Fiber } from "../src/types.js";
 

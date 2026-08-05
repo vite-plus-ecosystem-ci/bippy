@@ -1,4 +1,4 @@
-import { afterEach, expect, it } from "vitest";
+import { afterEach, expect, it } from "vite-plus/test";
 import { _fiberRoots, getLatestFiber } from "../src/index.js";
 import type { Fiber } from "../src/types.js";
 

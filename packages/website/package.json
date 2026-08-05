@@ -27,6 +27,7 @@
     "@vitejs/plugin-react": "^4.7.0",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vite-plus": "latest"
+    "vite": "catalog:",
+    "vite-plus": "catalog:"
   }
 }

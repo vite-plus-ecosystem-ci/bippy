@@ -1,4 +1,4 @@
-import { expect, it, vi } from "vitest";
+import { expect, it, vi } from "vite-plus/test";
 import { PENDING_HOT_UPDATE_MAX_AGE_MS } from "../src/react-refresh/constants.js";
 import { instrumentReactRefresh } from "../src/react-refresh/index.js";
 import { getRDTHook } from "../src/rdt-hook.js";

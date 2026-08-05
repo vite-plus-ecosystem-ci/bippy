@@ -2,7 +2,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 /* eslint-disable @typescript-eslint/no-require-imports */
 
-import { expect, it, vi } from "vitest";
+import { expect, it, vi } from "vite-plus/test";
 
 import { instrument } from "../src/index.js";
 
