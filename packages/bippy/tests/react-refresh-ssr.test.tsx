@@ -1,5 +1,5 @@
 // @vitest-environment node
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "vite-plus/test";
 import * as bippy from "../src/index.js";
 import { detectHmrTransport } from "../src/react-refresh/detect-hmr-transport.js";
 import { instrumentReactRefresh } from "../src/react-refresh/index.js";

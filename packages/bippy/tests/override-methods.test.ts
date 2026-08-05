@@ -1,6 +1,6 @@
 import "../src/index.js"; // KEEP THIS LINE ON TOP
 
-import { expect, it, vi } from "vitest";
+import { expect, it, vi } from "vite-plus/test";
 import { overrideContext, overrideHookState, overrideProps } from "../src/index.js";
 import type { Fiber, ReactDevToolsGlobalHook, ReactRenderer } from "../src/types.js";
 
