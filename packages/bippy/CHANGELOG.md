@@ -1,5 +1,11 @@
 # bippy
 
+## 0.6.2
+
+### Patch Changes
+
+- b88fcb4: Harden React internals, Fiber instrumentation, and source-map handling.
+
 ## 0.6.1
 
 ### Patch Changes
