@@ -23,6 +23,6 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "typescript": "^5",
-    "vite": "^6"
+    "vite": "catalog:"
   }
 }

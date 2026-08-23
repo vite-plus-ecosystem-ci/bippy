@@ -13,7 +13,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@types/react-test-renderer": "^19.1.0",
-    "@vitest/coverage-istanbul": "4.1.10",
+    "@vitest/coverage-istanbul": "catalog:",
     "happy-dom": "^20.11.6",
     "react": "^19.2.4",
     "react-16-0": "npm:react@16.0.0",
@@ -44,6 +44,8 @@
     "react-test-renderer": "^19.2.8",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vite-plus": "latest"
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   }
 }
