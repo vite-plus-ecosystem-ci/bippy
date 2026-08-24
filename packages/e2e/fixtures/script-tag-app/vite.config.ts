@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 // `vite preview` serves the outDir as-is; the pages are plain static html
 // with classic script tags and no bundling at all.
