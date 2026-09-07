@@ -22,6 +22,7 @@ export default defineConfig({
       "process.env.VERSION": JSON.stringify(pkg.version),
     },
     deps: {
+      resolveDepSubpath: true,
       alwaysBundle: ["@jridgewell/sourcemap-codec"],
       neverBundle: ["react", "react-dom", "react-reconciler"],
     },

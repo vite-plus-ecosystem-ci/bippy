@@ -32,7 +32,7 @@
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.4",
     "@types/react-test-renderer": "^19.1.0",
-    "@vitest/coverage-istanbul": "4.1.11",
+    "@vitest/coverage-istanbul": "catalog:",
     "babel-plugin-react-compiler": "^1.0.0",
     "bippy": "workspace:*",
     "happy-dom": "^20.11.6",
@@ -68,6 +68,8 @@
     "three": "^0.185.1",
     "tsx": "^4.21.0",
     "typescript": "^5.9.3",
-    "vite-plus": "latest"
+    "vite": "catalog:",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   }
 }
