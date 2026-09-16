@@ -15,6 +15,7 @@ export default defineConfig({
     ],
   },
   test: {
+    clearMocks: false,
     coverage: {
       include: ["src/**/*.{ts,tsx}"],
       provider: "istanbul",
