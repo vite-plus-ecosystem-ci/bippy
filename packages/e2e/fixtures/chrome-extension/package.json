@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build"
+    "build": "vp build"
   },
   "dependencies": {
     "bippy": "workspace:*",
@@ -13,6 +13,6 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^4.3.4",
     "typescript": "^5",
-    "vite": "^6"
+    "vite": "catalog:"
   }
 }
