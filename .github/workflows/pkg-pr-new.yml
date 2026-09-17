@@ -31,5 +31,6 @@ jobs:
       - name: Build
         run: pnpm build
 
-      - name: Publish
+      - if: ${{ github.repository_owner != 'vite-plus-ecosystem-ci' }}
+        name: Publish
         run: pnpx pkg-pr-new publish --compact ./packages/bippy

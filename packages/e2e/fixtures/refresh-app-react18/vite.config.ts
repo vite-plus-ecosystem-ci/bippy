@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 // Serves the shared refresh-app harness and scenario source against
 // React 18. Aliases rewrite every react import (including the ones inside
