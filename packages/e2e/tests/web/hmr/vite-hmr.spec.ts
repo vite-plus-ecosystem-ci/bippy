@@ -31,8 +31,8 @@ const targetFilePath = path.join(fixtureDirectory, "src/target.tsx");
 // node_modules rather than the fixture's; resolve it like node would.
 const fixtureRequire = createRequire(path.join(fixtureDirectory, "package.json"));
 const viteBinPath = path.join(
-  path.dirname(fixtureRequire.resolve("vite/package.json")),
-  "bin/vite.js",
+  path.dirname(fixtureRequire.resolve("vite-plus/package.json")),
+  "dist/bin.js",
 );
 
 let viteProcess: ChildProcess | null = null;
@@ -96,7 +96,7 @@ test.beforeAll(async () => {
   baseUrl = `http://localhost:${port}/`;
   viteProcess = spawnDevServer(
     process.execPath,
-    [viteBinPath, "--port", String(port), "--strictPort"],
+    [viteBinPath, "dev", "--port", String(port), "--strictPort"],
     fixtureDirectory,
   );
   await waitForServer(baseUrl);
