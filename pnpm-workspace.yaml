@@ -5,6 +5,12 @@ packages:
   - "packages/conformance/fixtures/*"
   - "packages/e2e/fixtures/*"
 overrides:
+  "react-router@7": 7.18.2
+  "react-router-dom@7": 7.18.2
+  "@react-router/dev": 7.18.2
+  "@react-router/express": 7.18.2
+  "@react-router/node": 7.18.2
+  "@react-router/serve": 7.18.2
   react: ^19.3.0
   react-dom: ^19.3.0
   vite@*: "catalog:"
