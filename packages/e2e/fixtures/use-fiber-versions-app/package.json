@@ -3,10 +3,10 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build:17": "pnpm typecheck && REACT_VERSION=17 vite build --outDir dist/react-17",
-    "build:18": "pnpm typecheck && REACT_VERSION=18 vite build --outDir dist/react-18",
-    "preview:17": "REACT_VERSION=17 vite preview --outDir dist/react-17",
-    "preview:18": "REACT_VERSION=18 vite preview --outDir dist/react-18",
+    "build:17": "pnpm typecheck && REACT_VERSION=17 vp build --outDir dist/react-17",
+    "build:18": "pnpm typecheck && REACT_VERSION=18 vp build --outDir dist/react-18",
+    "preview:17": "REACT_VERSION=17 vp preview --outDir dist/react-17",
+    "preview:18": "REACT_VERSION=18 vp preview --outDir dist/react-18",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -20,6 +20,6 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "typescript": "^5",
-    "vite": "^6"
+    "vite": "catalog:"
   }
 }
