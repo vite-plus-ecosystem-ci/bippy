@@ -11,3 +11,4 @@ next-env.d.ts
 # copied into the package by prepack
 packages/bippy/README.md
 packages/bippy/LICENSE
+.vitest/
