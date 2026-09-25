@@ -1,5 +1,5 @@
 import react from "@vitejs/plugin-react";
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 // The real Fast Refresh pipeline: @vitejs/plugin-react installs the
 // react-refresh preamble and transforms components, exactly like the apps
