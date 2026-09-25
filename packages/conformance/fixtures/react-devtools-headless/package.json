@@ -12,7 +12,7 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "@types/react-test-renderer": "^19.3.0",
-    "@vitest/coverage-istanbul": "4.1.11",
+    "@vitest/coverage-istanbul": "catalog:",
     "bippy": "workspace:*",
     "happy-dom": "^20.11.6",
     "react": "^19.3.0",
@@ -51,6 +51,7 @@
     "react-dom-19-2": "npm:react-dom@19.2.8",
     "react-test-renderer": "^19.3.0",
     "typescript": "^5.9.3",
-    "vite-plus": "latest"
+    "vite-plus": "catalog:",
+    "vitest": "catalog:"
   }
 }

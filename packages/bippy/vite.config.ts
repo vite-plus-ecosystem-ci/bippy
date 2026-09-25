@@ -22,6 +22,10 @@ export default defineConfig({
       "process.env.VERSION": JSON.stringify(pkg.version),
     },
     deps: {
+      // tsdown <0.23 compatibility: resolve external dependency subpaths.
+      // Remove to preserve subpath imports as written (the new default).
+      // https://tsdown.dev/options/dependencies#deps-resolvedepsubpath
+      resolveDepSubpath: true,
       alwaysBundle: ["@jridgewell/sourcemap-codec"],
       neverBundle: ["react", "react-dom", "react-reconciler"],
     },
