@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "prepare-vendor": "node scripts/prepare-vendor.mjs",
-    "preview": "vite preview"
+    "preview": "vp preview"
   },
   "dependencies": {
     "bippy": "workspace:*",
@@ -13,6 +13,6 @@
   },
   "devDependencies": {
     "esbuild": "^0.25.0",
-    "vite": "^7.3.4"
+    "vite": "catalog:"
   }
 }

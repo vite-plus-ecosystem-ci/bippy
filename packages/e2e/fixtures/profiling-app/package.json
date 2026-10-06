@@ -3,9 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "vite build",
-    "dev": "vite",
-    "preview": "vite preview"
+    "build": "vp build",
+    "dev": "vp dev",
+    "preview": "vp preview"
   },
   "dependencies": {
     "bippy": "workspace:*",
@@ -16,6 +16,6 @@
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
     "typescript": "^5",
-    "vite": "^7.3.4"
+    "vite": "catalog:"
   }
 }
