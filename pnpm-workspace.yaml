@@ -4,3 +4,22 @@ packages:
   - "packages/*"
   - "packages/bippy/tests/e2e"
   - "packages/bippy/tests/fixtures/*"
+overrides:
+  react: ^19.3.0
+  react-dom: ^19.3.0
+  vite@*: "catalog:"
+  vitest@*: "catalog:"
+patchedDependencies:
+  react-devtools-core@8.0.0: patches/react-devtools-core@8.0.0.patch
+catalog:
+  vite: npm:@voidzero-dev/vite-plus-core@0.0.0-commit.824e84de80cbc1af30829ed024a4158d416dbad3
+  vitest: 5.0.4
+  vite-plus: 0.0.0-commit.824e84de80cbc1af30829ed024a4158d416dbad3
+  "@vitest/coverage-istanbul": 5.0.4
+peerDependencyRules:
+  allowAny:
+    - vite
+    - vitest
+  allowedVersions:
+    vite: "*"
+    vitest: "*"
