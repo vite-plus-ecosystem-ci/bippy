@@ -29,10 +29,13 @@ const targetFilePath = path.join(fixtureDirectory, "src/target.tsx");
 
 // The workspace uses the hoisted node linker, so vite may live in the root
 // node_modules rather than the fixture's; resolve it like node would.
+// Ecosystem-ci smoke test: after `vp migrate`, `vite` is an alias of
+// @voidzero-dev/vite-plus-core, which ships no bin/vite.js. Launch the
+// fixture's migrated dev command (`vp dev`) instead.
 const fixtureRequire = createRequire(path.join(fixtureDirectory, "package.json"));
 const viteBinPath = path.join(
-  path.dirname(fixtureRequire.resolve("vite/package.json")),
-  "bin/vite.js",
+  path.dirname(fixtureRequire.resolve("vite-plus/package.json")),
+  "bin/vp",
 );
 
 let viteProcess: ChildProcess | null = null;
@@ -96,7 +99,7 @@ test.beforeAll(async () => {
   baseUrl = `http://localhost:${port}/`;
   viteProcess = spawnDevServer(
     process.execPath,
-    [viteBinPath, "--port", String(port), "--strictPort"],
+    [viteBinPath, "dev", "--port", String(port), "--strictPort"],
     fixtureDirectory,
   );
   await waitForServer(baseUrl);
