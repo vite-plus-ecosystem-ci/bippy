@@ -1,6 +1,6 @@
 import { dirname } from "node:path";
 import { createRequire } from "node:module";
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 const packageRequire = createRequire(import.meta.url);
 const reactVersion = process.env.REACT_VERSION;
