@@ -1,5 +1,5 @@
 import { resolve } from "node:path";
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 // No @vitejs/plugin-react on purpose: the harness owns the only
 // react-refresh runtime on the page, mirroring facebook/react's
