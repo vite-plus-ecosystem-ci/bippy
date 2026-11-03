@@ -1,5 +1,5 @@
 import { resolve } from "node:path";
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 // Serves the shared refresh-app harness and scenario source against the
 // React experimental channel (nightly builds from facebook/react main).
