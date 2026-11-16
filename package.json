@@ -23,16 +23,7 @@
     "@changesets/changelog-git": "^0.2.0",
     "@changesets/cli": "^2.30.0",
     "sherif": "^1.2.0",
-    "vite-plus": "latest"
+    "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@10.12.1",
-  "pnpm": {
-    "overrides": {
-      "react": "^19.3.0",
-      "react-dom": "^19.3.0"
-    },
-    "patchedDependencies": {
-      "react-devtools-core@8.0.0": "patches/react-devtools-core@8.0.0.patch"
-    }
-  }
+  "packageManager": "pnpm@10.12.1"
 }

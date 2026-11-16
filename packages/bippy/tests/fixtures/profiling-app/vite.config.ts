@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig } from "vite-plus";
 
 // The React profiling build: production-grade code with profiling timers
 // (actualDuration/actualStartTime on fibers), which apps opt into via the

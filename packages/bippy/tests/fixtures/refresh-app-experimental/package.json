@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vp dev",
     "update-experimental": "pnpm add react-experimental@npm:react@experimental react-dom-experimental@npm:react-dom@experimental react-refresh@experimental"
   },
   "dependencies": {
@@ -13,6 +13,6 @@
     "react-refresh": "0.0.0-experimental-eb8feb71-20260814"
   },
   "devDependencies": {
-    "vite": "^7.3.4"
+    "vite": "catalog:"
   }
 }

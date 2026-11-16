@@ -115,7 +115,7 @@
     "@types/react-dom": "^19.3.0",
     "@types/react-test-renderer": "^19.3.0",
     "@typescript/typescript6": "^6.0.2",
-    "@vitest/coverage-istanbul": "4.1.11",
+    "@vitest/coverage-istanbul": "catalog:",
     "babel-plugin-react-compiler": "^1.0.0",
     "happy-dom": "^20.11.6",
     "ink": "^7.1.1",
@@ -161,7 +161,8 @@
     "three": "^0.185.1",
     "tsx": "^4.21.0",
     "typescript": "^7.0.2",
-    "vite-plus": "latest",
+    "vite-plus": "catalog:",
+    "vitest": "catalog:",
     "zod": "^4.4.3"
   },
   "peerDependencies": {
